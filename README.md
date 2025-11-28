@@ -61,6 +61,11 @@ OLLAMA_HOST=http://localhost:11434
 OLLAMA_MODEL=llama3.1
 USE_CUSTOM_TOOLS=true
 
+```
+
+
+```bash
+
 3. Execução
 
 # Inicia a API (projeto)
@@ -71,9 +76,8 @@ python manage.py api
 
 python manage.py test
 
-
 ```
 
 ## Imagens
-![Pergunta exemplo](images/1.png)
-![Resposta](images/2.png)
+![Pergunta exemplo](teste-tecnico/images/1.png)
+![Resposta](teste-tecnico/images/2.png)
