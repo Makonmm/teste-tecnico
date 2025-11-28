@@ -79,5 +79,5 @@ python manage.py test
 ```
 
 ## Imagens
-![Pergunta exemplo](images/1.PNG)
-![Resposta](images/2.PNG)
+![Pergunta exemplo](teste-tecnico/images/1.PNG)
+![Resposta](teste-tecnico/images/2.PNG)
