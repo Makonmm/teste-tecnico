@@ -13,7 +13,7 @@ O Agente atua como um "orquestrador" que decide autonomamente quando utilizar fe
 graph LR
     User[Usuário] -->|POST /chat| API[FastAPI]
     API -->|Request| Agent[Strands Agent]
-    Agent -->|Raciocínio| LLM[Ollama (Llama 3.1)]
+    Agent -->|Raciocínio| LLM["Ollama (Llama 3.1)"]
     Agent -->|Cálculo Exato| Tool[Calculo tool or Calculator tool]
     Tool -->|Resultado| Agent
     Agent -->|JSON Limpo| API
@@ -79,5 +79,5 @@ python manage.py test
 ```
 
 ## Imagens
-![Pergunta exemplo](teste-tecnico/images/1.png)
-![Resposta](teste-tecnico/images/2.png)
+![Pergunta exemplo](images/1.PNG)
+![Resposta](images/2.PNG)
