@@ -19,9 +19,9 @@ use_custom = os.getenv("USE_CUSTOM_TOOLS")
 
 if use_custom:
     try:
-        from src.tools import calc
-        tool = calc
-        logger.info("Usando a tool criada (calc)")
+        from src.tools import calculo
+        tool = calculo
+        logger.info("Usando a tool criada (calculo)")
     except ImportError as e:
         logger.critical(
             f"Ocorreu um erro de import, verifique ")
@@ -49,9 +49,15 @@ def agente():
 
 
                   tools=[tool],
-                  system_prompt=("Você é um especialista em cálculos matemáticos."
-                                 "Sempre que o usuário enviar uma expressão matemática, USE a ferramenta matemática 'calc' para garantir precisão, não calcule por conta própria."
-                                 "Para outros tipos de perguntas (que não envolvem expressões matemáticas), responda normalmente.")
+                  system_prompt=(
+                      "Você é um Agente especialista que retorna respostas para uma API de maneira objetiva. "
+                      "Sua tarefa é receber uma entrada e retornar APENAS a resposta final. "
+                      "REGRAS: "
+                      "1. NUNCA deixe seu raciocínio explícito na resposta(ex: 'Vou calcular...', 'A pergunta é...'). "
+                      "2. NUNCA mencione que você usou uma tool"
+                      "3. Se for um cálculo, retorne apenas o número ou a frase curta de resposta. "
+                      "4. Se for uma pergunta geral, responda normalmente. "
+                  )
                   )
     return agent
 

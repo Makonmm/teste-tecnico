@@ -1,10 +1,10 @@
 from src.agent import meu_agente
 
-pergunta = "Quanto é 10 elevado a 6?"
-print("\n")
+pergunta = input("Digite uma expressao matemática ou uma pergunta geral: ")
 print(f"Pergunta: {pergunta}")
 print("\n")
-print("Aguarde...(talvez leve um tempinho)")
+print("...(talvez leve um tempinho)")
+print("\n")
 
 resposta = meu_agente(pergunta)
 
