@@ -1,26 +1,39 @@
-import numexpr
 from strands import tool
+import re
+import numexpr
+import logging
+
+
+logger = logging.getLogger("Tools")
+
+# tool de cálculo criada ma nualmente como alternativa a tool padrão
 
 
 @tool
-# tool de cálculo criada manualmente como alternativa a tool padrão
 def calculo(x: str) -> str:
     """
-    Função responsável pelos cálculos matemáticos.
+    Realiza cálculos numéricos.
+    Use APENAS para expressões contendo números e operadores.
+    NÃO use para perguntas de texto ou fatos históricos.
 
     Args:
-        x (str): A expressão matemática "x" a ser calculada.
-
-    Returns:
-        str: O resultado ou uma mensagem de erro.
+        x (str): Expressão matemática.
     """
+    entrada = x.strip()
+
+    if entrada == "0" or entrada == "":
+        return "Erro: Entrada inválida. Não use a tool para perguntas gerais."
+
+    if not re.search(r'[\d+\-*/^=]', entrada):
+        return "Erro: Envie expressões matemáticas."
+
+    logger.info(
+        " Cálculo DETECTADO (--> Tool de calculo acionada para essa pergunta <--) \n Expressão: %s", entrada)
 
     try:
-        limpa_entrada = x.strip()
-        resultado = numexpr.evaluate(limpa_entrada).item()
-
+        resultado = numexpr.evaluate(entrada).item()
         return f"Resultado: {resultado}"
     except SyntaxError:
-        return "Erro, verifique a expressão"
+        return "Erro: Verifique a expressão."
     except Exception as e:
         return f"Erro: {e}"

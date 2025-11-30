@@ -3,6 +3,7 @@ from pydantic import BaseModel
 import logging
 import time
 from src.agent import meu_agente
+from src.cache import cache_em_memoria
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("API")
@@ -10,7 +11,7 @@ logger = logging.getLogger("API")
 
 app = FastAPI(title="API Do Agente de IA",
               description="API que conecta o Agente com a tool solicitada, usando ollama",
-              versin="1.0.0")
+              version="1.0.0")
 
 
 # modelos
@@ -63,13 +64,24 @@ def chat_endpoint(req: ChatReq):
     """Esse endpoint receberá a PERGUNTA, depois passará para o agente, retornando a resposta"""
 
     try:
-        logger.info("Mensagem: %s", req.message)
+        cache_key = req.message.strip().lower()
+        saved_resp = cache_em_memoria.get(cache_key)
+
+        if saved_resp:
+            logger.info(
+                "HIT: Respondendo '%s' com armazenamento em cache", req.message)
+            return ChatResp(response=saved_resp)
+
+        logger.info("Mensagem (processando): %s", req.message)
 
         agent_resp = meu_agente(req.message)
+        parsed_agent_resp = str(agent_resp)
 
-        logger.info("\tResposta gerada\n")
+        cache_em_memoria.set(cache_key, parsed_agent_resp)
 
-        return ChatResp(response=f"{agent_resp}\t")
+        logger.info("\tResposta gerada e salva no cache.\n")
+
+        return ChatResp(response=f"{parsed_agent_resp}")
 
     except Exception as e:
         logger.error(
