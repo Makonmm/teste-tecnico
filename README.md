@@ -81,3 +81,4 @@ python manage.py test
 ## Imagens
 ![Pergunta exemplo](teste-tecnico/images/1.PNG)
 ![Resposta](teste-tecnico/images/2.PNG)
+![Resposta2](teste-tecnico/images/3.PNG)
