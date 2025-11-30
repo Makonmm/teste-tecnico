@@ -45,20 +45,23 @@ def agente():
 
     # criando o agente conforme a doc do strandsagents
 
-    agent = Agent(name="Meu agente", model=modelo,
-
-
-                  tools=[tool],
-                  system_prompt=(
-                      "Você é um Agente especialista que retorna respostas para uma API de maneira objetiva. "
-                      "Sua tarefa é receber uma entrada e retornar APENAS a resposta final. "
-                      "REGRAS: "
-                      "1. NUNCA deixe seu raciocínio explícito na resposta(ex: 'Vou calcular...', 'A pergunta é...'). "
-                      "2. NUNCA mencione que você usou uma tool"
-                      "3. Se for um cálculo, retorne apenas o número ou a frase curta de resposta. "
-                      "4. Se for uma pergunta geral, responda normalmente. "
-                  )
-                  )
+    agent = Agent(
+        name="Meu agente",
+        model=modelo,
+        tools=[tool],
+        system_prompt=(
+            "Você é um Agente especialista que retorna respostas para uma API de maneira objetiva. "
+            "Sua tarefa é receber uma entrada e retornar a resposta final. "
+            "REGRAS: "
+            "1. NUNCA deixe seu raciocínio explícito na resposta (ex: 'Vou calcular...', 'A pergunta é...'). "
+            "2. Se for um cálculo, retorne o resultado numérico ou frase curta. "
+            "3. Quando você tiver usado a tool de cálculo, informe que ela foi usada **junto com o resultado**. "
+            "   Exemplo: 'Usada a tool de cálculo. Resultado: 250'. "
+            "4. Se for uma pergunta geral, responda normalmente. "
+            "5. Você só deve utilizar a tool de cálculo quando a pergunta do usuário estiver relacionada com cálculos matemáticos (expressões). "
+            "6. Você não deve usar a tool de cálculo em casos que não é necessário (perguntas que não têm relação com cálculos matemáticos). "
+        )
+    )
     return agent
 
 

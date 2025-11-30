@@ -8,7 +8,7 @@ logger = logging.getLogger("API")
 
 
 app = FastAPI(title="API Do Agente de IA",
-              description="API que conectará o Agente com a tool solicitada, usando ollama",
+              description="API que conecta o Agente com a tool solicitada, usando ollama",
               versin="1.0.0")
 
 
@@ -49,7 +49,7 @@ def chat_endpoint(req: ChatReq):
 
         logger.info("\tResposta gerada\n")
 
-        return ChatResp(response=f"{agent_resp}")
+        return ChatResp(response=f"{agent_resp}\t")
 
     except Exception as e:
         logger.error(f"Ocorreu algum erro ao tentar processar a mensagem: {e}")

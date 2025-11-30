@@ -4,10 +4,11 @@ from strands_tools import calculator
 
 
 @tool
-# tool de cálculo criada manualmente usando numexpr como alternativa a tool padrão
+# tool de cálculo criada manualmente como alternativa a tool padrão
 def calculo(x: str) -> str:
     """
     Função responsável pelos cálculos matemáticos.
+
     Args:
         x (str): A expressão matemática "x" a ser calculada.
 
