@@ -14,7 +14,7 @@ graph LR
     User[Usuário] -->|POST /chat| API[FastAPI]
     API -->|Request| Agent[Strands Agent]
     Agent -->|Raciocínio| LLM["Ollama (Llama 3.1)"]
-    Agent -->|Cálculo Exato| Tool[Calculo tool or Calculator tool]
+    Agent -->|Cálculo Exato| Tool[Calculo tool/Calculator tool]
     Tool -->|Resultado| Agent
     Agent -->|JSON Limpo| API
     API -->|Response| User
@@ -78,6 +78,27 @@ python manage.py test
 
 ```
 
+## Execução via Docker (Opcional)
+
+
+### 1. Buildando a Imagem
+
+No terminal (na raiz do projeto):
+
+```bash
+docker build -t agente-ia-api .
+# Se for ambiente windows, rode:
+docker run -d -p 8000:8000 --name meu-agente \
+  -e OLLAMA_HOST="[http://host.docker.internal:11434](http://host.docker.internal:11434)" \
+  agente-ia-api
+
+# Caso seja Linux, rode:
+
+docker run -d --network host --name meu-agente \
+  -e OLLAMA_HOST="http://localhost:11434" \
+  agente-ia-api
+
+```
 ## Imagens
 ![Pergunta exemplo](teste-tecnico/images/1.PNG)
 ![Resposta](teste-tecnico/images/2.PNG)
