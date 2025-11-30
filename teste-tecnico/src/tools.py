@@ -1,6 +1,5 @@
 import numexpr
 from strands import tool
-from strands_tools import calculator
 
 
 @tool
@@ -22,6 +21,6 @@ def calculo(x: str) -> str:
 
         return f"Resultado: {resultado}"
     except SyntaxError:
-        return f"Erro, verifique a expressão"
+        return "Erro, verifique a expressão"
     except Exception as e:
         return f"Erro: {e}"
