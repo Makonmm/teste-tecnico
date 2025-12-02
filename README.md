@@ -63,11 +63,9 @@ USE_CUSTOM_TOOLS=true
 
 ```
 
-
-```bash
-
 3. Execução
 
+```bash
 # Inicia a API (projeto)
 
 python manage.py api
@@ -103,3 +101,15 @@ docker run -d --network host --name meu-agente \
 ![Pergunta exemplo](teste-tecnico/images/1.PNG)
 ![Resposta](teste-tecnico/images/2.PNG)
 ![Resposta2](teste-tecnico/images/3.PNG)
+
+
+## Referências 
+
+Durante o desenvolvimento, as seguintes fontes foram consultadas:
+
+* **Segurança:** A decisão de utilizar `numexpr` (funçã segura) ao invés de `eval()` (função insegura) baseou-se na prevenção de *Remote Code Execution (RCE)* e riscos de injeção detalhados no [OWASP Injection Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Injection_Prevention_Cheat_Sheet.html).
+* **Performance (Cache):** A implementação do algoritmo **LRU (Least Recently Used)** para o cache em memória. Conceito detalhado em: [Cache Replacement Policies (Wikipedia)](https://en.wikipedia.org/wiki/Cache_replacement_policies#Least_recently_used_(LRU)).
+* **Arquitetura (12-Factor App):** A estrutura do projeto segue os princípios do [The Twelve-Factor App](https://12factor.net/pt_br/), garantindo a separação de configurações (`.env`).
+* **Orquestração do Agente (ReAct):** A lógica de ação do Agente foi inspirada no padrão *ReAct (Reason + Act)*, onde o modelo raciocina sobre a intenção do usuário antes de decidir invocar uma tool externa. Artigo: [ReAct: Synergizing Reasoning and Acting in Language Models](https://arxiv.org/abs/2210.03629).
+* **LLM Local:** A configuração do Llama 3 para *Tool Calling* seguiu as diretrizes da [Ollama Library](https://ollama.com/library/llama3).
+* **FastAPI Best Practices:** A estruturação modular, validação com Pydantic e uso de Middleware seguem a [Documentação Oficial do FastAPI](https://fastapi.tiangolo.com/).
