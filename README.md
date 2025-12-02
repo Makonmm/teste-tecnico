@@ -107,6 +107,7 @@ docker run -d --network host --name meu-agente \
 
 Durante o desenvolvimento, as seguintes fontes foram consultadas:
 
+* **Strands SDK:** A implementação do Agente segue a [Documentação Oficial do Strands Agents](https://strandsagents.com/latest/documentation/docs/).
 * **Segurança:** A decisão de utilizar `numexpr` (funçã segura) ao invés de `eval()` (função insegura) baseou-se na prevenção de *Remote Code Execution (RCE)* e riscos de injeção detalhados no [OWASP Injection Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Injection_Prevention_Cheat_Sheet.html).
 * **Performance (Cache):** A implementação do algoritmo **LRU (Least Recently Used)** para o cache em memória. Conceito detalhado em: [Cache Replacement Policies (Wikipedia)](https://en.wikipedia.org/wiki/Cache_replacement_policies#Least_recently_used_(LRU)).
 * **Arquitetura (12-Factor App):** A estrutura do projeto segue os princípios do [The Twelve-Factor App](https://12factor.net/pt_br/), garantindo a separação de configurações (`.env`).
