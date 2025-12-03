@@ -43,7 +43,7 @@ def calculo(x: str) -> str:
 
 @tool
 # usei "pergunta" como um dummy argument para o agente.
-def about_me(pergunta: str) -> str:
+def author(pergunta: str) -> str:
     """Retorna informações sobre o desenvolvedor do projeto (Matheus Henrique).
 
     Quando usar:

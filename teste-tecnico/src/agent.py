@@ -1,6 +1,6 @@
 import os
 import logging
-from src.tools import about_me
+from src.tools import author
 from typing import Any
 from strands import Agent
 from strands.models.ollama import OllamaModel
@@ -20,13 +20,13 @@ SYSTEM_PROMPT = (
     "1. É MATEMÁTICA PURA (ex: '10*10', 'raiz de 50', '5+5')? -> USE A TOOL 'calculo'.\n"
     "2. É CONHECIMENTO GERAL (ex: 'Quem é...', 'O que é...', 'Capital de...')? -> NÃO USE TOOL. Responda direto.\n"
     "3. É ÁLGEBRA/TEORIA (ex: 'Fórmula de Bhaskara', 'O que é derivada')? -> NÃO USE TOOL. Responda direto.\n"
-    "4. É SOBRE O AUTOR/CRIADOR -> USE A TOOL 'about_me'.\n"
+    "4. É SOBRE O AUTOR/CRIADOR -> USE A TOOL 'author'.\n"
     "</protocolo_decisao>\n\n"
 
     "<regras_criticas>\n"
     "- PROIBIDO usar a tool 'calculo' para perguntas que não contenham números explícitos.\n"
     "- PROIBIDO retornar JSON interno (ex: {'name': 'None'}). Retorne apenas o texto da resposta.\n"
-    "- Se a pergunta for sobre o Matheus Henrique ou sobre quem criou este projeto, USE a tool 'about_me'.\n"
+    "- Se a pergunta for sobre o Matheus Henrique ou sobre quem criou este projeto, USE a tool 'author'.\n"
     "- Se a pergunta for sobre uma PESSOA (ex: 'Quem é Messi', 'Quem foi Newton'), IGNORE a tool e responda com texto.\n"
     "- Responda de forma direta, sem introduções como 'A resposta é...'.\n"
     "</regras_criticas>\n\n"
@@ -84,7 +84,7 @@ def agente() -> Agent:
     agent = Agent(
         name="Meu agente",
         model=modelo,
-        tools=[tool_selecionada, about_me],
+        tools=[tool_selecionada, author],
         system_prompt=SYSTEM_PROMPT
     )
     return agent
