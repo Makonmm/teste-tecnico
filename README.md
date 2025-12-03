@@ -5,7 +5,7 @@
 ## Arquitetura Da Solução Desenvolvida:
 
 O programa adota uma arquitetura modular baseada no Agente. 
-O Agente atua como um "orquestrador" que decide autonomamente quando utilizar ferramentas de cálculo ou quando responder utilizando seu próprio conhecimento de treinamento.
+O Agente atua como um "orquestrador" que decide autonomamente quando utilizar ferramentas ou quando responder utilizando seu próprio conhecimento de treinamento.
 
 
 
@@ -19,13 +19,13 @@ graph LR
     end
     
     subgraph "Execução de Tarefas"
-        Agent -- Matemática --> Tool calculo[Ferramenta de Cálculo]
-        Agent -- Sobre o Autor --> Tool about_me[Ferramenta de Info Autor]
+        Agent -- Matemática --> Tool_Calculo[Ferramenta de Cálculo]
+        Agent -- Sobre o Autor --> Tool_about_me[Ferramenta de Info Autor]
         Agent -. Conhecimento Geral .-> Direct[Resposta Direta (conhecimento de treinamento)]
     end
     
-    Tool calculo -->|Resultado Exato| Agent
-    Tool about_me -->|Dados do Desenvolvedor| Agent
+    Tool_calculo -->|Resultado Exato| Agent
+    Tool_about_me -->|Dados do Desenvolvedor| Agent
     Direct -.->|Texto Gerado| Agent
     
     Agent -->|JSON Final| API
