@@ -20,7 +20,7 @@ class ChatReq(BaseModel):  # requisição
     message: str
     model_config = {
         "json_schema_extra": {
-            "examples": [{"message": "Quanto é a raiz quadrada de 144 vezes 10? Primeiro tire a raiz quadrada de 144, depois multiplique o resultado por 10."}]
+            "examples": [{"message": "Quem é o autor do projeto? Me fale o que você sabe sobre ele?"}]
         }
     }
 

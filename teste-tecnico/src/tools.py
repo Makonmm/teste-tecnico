@@ -6,7 +6,7 @@ import logging
 
 logger = logging.getLogger("Tools")
 
-# tool de cálculo criada ma nualmente como alternativa a tool padrão
+# tool de cálculo criada manualmente como alternativa a tool padrão
 
 
 @tool
@@ -37,3 +37,24 @@ def calculo(x: str) -> str:
         return "Erro: Verifique a expressão."
     except Exception as e:
         return f"Erro: {e}"
+
+# tool que  agente usa para falar algumas informações sobre o autor do projeto.
+
+
+@tool
+# usei "pergunta" como um dummy argument para o agente.
+def about_me(pergunta: str) -> str:
+    """Retorna informações sobre o desenvolvedor do projeto (Matheus Henrique).
+
+    Quando usar:
+    - Quando perguntarem algo relacionado ao autor do projeto, como: "Quem te criou?", "Quem criou isso?, "Quem é o autor?", "Fale sobre o Matheus"   
+
+    """
+    logger.info("Tool about me acionada")
+    return (
+        "---- Informações sobre o autor ----\n"
+        "Nome: Matheus Henrique\n"
+        "Perfil: Estudante de Ciência Da Computação, apaixonado por IA e Cibersegurança.\n"
+        "Algumas implementações do projeto: Segurança anti-RCE, Dockerização, Caching e Arquitetura de IA 'Neuro-simbólica.'\n"
+        "Quer saber mais? Verifique no Linkedin: https://www.linkedin.com/in/matheus-henrique-ramos-siqueira-890052200/"
+    )
