@@ -21,7 +21,7 @@ graph LR
     subgraph "Execução de Tarefas"
         Agent -- Matemática --> Tool_Calculo[Ferramenta de Cálculo]
         Agent -- Sobre o Autor --> Tool_about_me[Ferramenta de Info Autor]
-        Agent -. Conhecimento Geral .-> Direct[Resposta Direta (conhecimento de treinamento)]
+        Agent -. Conhecimento Geral .-> Direct[Resposta Direta]
     end
     
     Tool_calculo -->|Resultado Exato| Agent
