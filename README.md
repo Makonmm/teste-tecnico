@@ -24,10 +24,6 @@ graph LR
         Agent -. Conhecimento Geral .-> Direct[Resposta Direta]
     end
     
-    Tool_calculo -->|Resultado Exato| Agent
-    Tool_about_me -->|Dados do Desenvolvedor| Agent
-    Direct -.->|Texto Gerado| Agent
-    
     Agent -->|JSON Final| API
     API -->|Response| User
 
